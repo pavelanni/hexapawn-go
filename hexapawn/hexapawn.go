@@ -44,6 +44,9 @@ func NewBoard(boardCols, boardRows int) *Board {
 		grid: make([][]string, boardRows)}
 	for row := 0; row < b.Rows; row++ {
 		b.grid[row] = make([]string, b.Cols)
+		for col := 0; col < b.Cols; col++ {
+			b.grid[row][col] = "." // fill empty cells with dots
+		}
 	}
 	// Place white pawns (W) at the bottom row
 	for col := 0; col < b.Cols; col++ {
@@ -61,11 +64,7 @@ func (b *Board) Print() {
 	for i := b.Rows - 1; i >= 0; i-- {
 		fmt.Printf("%2d  ", i+1)
 		for _, cell := range b.grid[i] {
-			if cell == "" {
-				fmt.Print(". ")
-			} else {
-				fmt.Print(cell, " ")
-			}
+			fmt.Print(cell, " ")
 		}
 		fmt.Println()
 	}
@@ -136,11 +135,11 @@ func (b *Board) IsValidMove(m Move, player string) bool {
 		return false
 	}
 	// We can't move non-vertically on an empty space
-	if m.ToCol != m.FromCol && b.grid[m.ToRow][m.ToCol] == "" {
+	if m.ToCol != m.FromCol && b.grid[m.ToRow][m.ToCol] == "." {
 		return false
 	}
 	// Check if we move to an empty position or it's a capture move
-	if b.grid[m.ToRow][m.ToCol] != "" {
+	if b.grid[m.ToRow][m.ToCol] != "." {
 		// check if the move is diagonal
 		if m.ToCol != m.FromCol+1 && m.ToCol != m.FromCol-1 {
 			return false
@@ -152,7 +151,7 @@ func (b *Board) IsValidMove(m Move, player string) bool {
 // Apply a move to the board
 func (b *Board) ApplyMove(m Move) {
 	b.grid[m.ToRow][m.ToCol] = b.grid[m.FromRow][m.FromCol]
-	b.grid[m.FromRow][m.FromCol] = ""
+	b.grid[m.FromRow][m.FromCol] = "."
 }
 
 // Check for a win condition
@@ -207,42 +206,15 @@ func (b *Board) PlayGame() {
 	}
 }
 
-// Define a map to store the board positions and moves
-type LearningMachine struct {
-	history []Move
-	memory  map[string][]Move
-}
-
-// Initialize the learning machine
-func NewLearningMachine() *LearningMachine {
-	return &LearningMachine{
-		history: make([]Move, 0),
-		memory:  make(map[string][]Move),
-	}
-}
-
-// Learn from the game outcome
-func (lm *LearningMachine) Learn(outcome string) {
-	if outcome == "W" {
-		// Add the last move to the memory if the machine wins
-		for _, move := range lm.history {
-			lm.memory[move.String()] = append(lm.memory[move.String()], move)
-		}
-	} else {
-		// Remove the last move from the memory if the machine loses
-		for _, move := range lm.history {
-			moves := lm.memory[move.String()]
-			if len(moves) > 0 {
-				lm.memory[move.String()] = moves[:len(moves)-1]
-			}
-		}
-	}
-	lm.history = make([]Move, 0)
-}
-
-// Convert move to string for easy comparison
+// String is a stringer for Move
 func (m Move) String() string {
 	return fmt.Sprintf("%s%d-%s%d", letters[m.FromCol:m.FromCol+1], m.FromRow+1, letters[m.ToCol:m.ToCol+1], m.ToRow+1)
+}
+
+// String is a stringer for Board
+func (b Board) String() string {
+	return fmt.Sprintf("%s%s%s", strings.Join(b.grid[0], ""),
+		strings.Join(b.grid[1], ""), strings.Join(b.grid[2], ""))
 }
 
 // GetMoves returns possible moves for the given board and player
@@ -277,6 +249,7 @@ func (b *Board) GetMoves(player string) []Move {
 
 // Generate generates possible positions and moves
 func (b *Board) Generate() {
+	fmt.Println(b)
 	b.GetMoves("B")
 	b.GetMoves("W")
 
