@@ -2,7 +2,6 @@ package hexapawn
 
 import (
 	"fmt"
-	"log"
 	"math"
 	"math/rand"
 	"strconv"
@@ -15,10 +14,14 @@ const (
 
 // Define the Board struct
 type Board struct {
+	Rows int
+	Cols int
+	grid [][]string
+}
+
+type Game struct {
 	NumPlayers int
-	Rows       int
-	Cols       int
-	grid       [][]string
+	Board      *Board
 }
 
 type Piece struct {
@@ -35,22 +38,25 @@ type Move struct {
 	ToCol   int
 }
 
-type Step struct {
-	Player    string            // current player
-	Positions map[string][]Move // each position is a string like "BBB...WWW"; for each position, there is a list of possible moves
+// Position defines a position with a board, a player, and a list of possible moves
+type Position struct {
+	Board  *Board
+	Player string
+	Moves  []Move
 }
 
-// Initialize a new board with pawns
-func NewBoard(boardCols, boardRows, numPlayers int) *Board {
-	// check if the board dimensions are valid
-	if boardRows < 3 || boardCols < 3 || boardRows > 9 || boardCols > 9 || boardRows != boardCols {
-		log.Fatalf("Invalid board dimensions. Rows and Cols must be equal and at least 3, at most 9.")
-	}
+type Step struct {
+	Player    string              // current player
+	Positions map[string]Position // each position is a string like "BBB...WWW"; for each position, there is a list of possible moves
+}
+
+// Initialize a new board
+func NewBoard(boardRows int) *Board {
 	b := &Board{
-		NumPlayers: numPlayers,
-		Rows:       boardRows,
-		Cols:       boardCols,
-		grid:       make([][]string, boardRows)}
+		Rows: boardRows,
+		Cols: boardRows,
+		grid: make([][]string, boardRows),
+	}
 	for row := 0; row < b.Rows; row++ {
 		b.grid[row] = make([]string, b.Cols)
 		for col := 0; col < b.Cols; col++ {
@@ -66,6 +72,22 @@ func NewBoard(boardCols, boardRows, numPlayers int) *Board {
 		b.grid[b.Rows-1][col] = "B"
 	}
 	return b
+}
+
+// Initialize a new game
+func NewGame(boardRows, numPlayers int) (*Game, error) {
+	// check if the board dimensions are valid
+	if boardRows < 3 || boardRows > 9 {
+		return nil, fmt.Errorf("Invalid board dimensions. Rows and Cols must be equal and at least 3, at most 9.")
+	}
+	if numPlayers < 0 || numPlayers > 2 {
+		return nil, fmt.Errorf("Invalid number of players. Must be 0, 1, or 2.")
+	}
+	g := &Game{
+		NumPlayers: numPlayers,
+		Board:      NewBoard(boardRows),
+	}
+	return g, nil
 }
 
 // Print the board state
@@ -177,7 +199,7 @@ func (b *Board) CheckWin() string {
 }
 
 // Play the game
-func (b *Board) PlayGame() {
+func (g *Game) Play() {
 	currentPlayer := "W"
 	winner := ""
 	var moveStr string
@@ -188,7 +210,7 @@ func (b *Board) PlayGame() {
 	for {
 		moveNumber++
 		fmt.Printf("Move %d\n", moveNumber)
-		moves := b.GetMoves(currentPlayer)
+		moves := g.Board.GetMoves(currentPlayer)
 		if len(moves) == 0 {
 			if currentPlayer == "W" {
 				winner = "B"
@@ -198,11 +220,11 @@ func (b *Board) PlayGame() {
 			fmt.Printf("Player %s has no moves; player %s wins!\n", currentPlayer, winner)
 			break
 		}
-		switch b.NumPlayers {
+		switch g.NumPlayers {
 		case 2:
 			fmt.Printf("Player %s, enter your move: ", currentPlayer)
 			fmt.Scan(&moveStr)
-			move, err = b.NewMove(moveStr)
+			move, err = g.Board.NewMove(moveStr)
 			if err != nil {
 				fmt.Println(err)
 				continue
@@ -211,7 +233,7 @@ func (b *Board) PlayGame() {
 			if currentPlayer == "W" {
 				fmt.Print("Player W, enter your move: ")
 				fmt.Scan(&moveStr)
-				move, err = b.NewMove(moveStr)
+				move, err = g.Board.NewMove(moveStr)
 				if err != nil {
 					fmt.Println(err)
 					continue
@@ -226,11 +248,11 @@ func (b *Board) PlayGame() {
 			continue
 		}
 
-		if b.IsValidMove(move, currentPlayer) {
+		if g.Board.IsValidMove(move, currentPlayer) {
 			fmt.Printf("Player %s moves %s\n", currentPlayer, move)
-			b.ApplyMove(move)
-			b.Print()
-			winner = b.CheckWin()
+			g.Board.ApplyMove(move)
+			g.Board.Print()
+			winner = g.Board.CheckWin()
 			if winner != "" {
 				fmt.Printf("Player %s wins!\n", winner)
 				break
@@ -253,8 +275,11 @@ func (m Move) String() string {
 
 // String is a stringer for Board
 func (b Board) String() string {
-	return fmt.Sprintf("%s%s%s", strings.Join(b.grid[0], ""),
-		strings.Join(b.grid[1], ""), strings.Join(b.grid[2], ""))
+	var output string
+	for i := 0; i < b.Rows; i++ {
+		output += strings.Join(b.grid[i], "")
+	}
+	return output
 }
 
 func BoardFromString(boardStr string) *Board {
@@ -263,7 +288,11 @@ func BoardFromString(boardStr string) *Board {
 	if rows*rows != len(boardStr) {
 		panic("Board string's length must be a square of integer: 9, 16, 25, etc.")
 	}
-	b := NewBoard(rows, rows, 0)
+	b := &Board{
+		grid: make([][]string, rows),
+		Rows: rows,
+		Cols: rows,
+	}
 	for i := 0; i < b.Rows; i++ {
 		for j := 0; j < b.Cols; j++ {
 			b.grid[i][j] = boardStr[i*b.Cols+j : i*b.Cols+j+1]

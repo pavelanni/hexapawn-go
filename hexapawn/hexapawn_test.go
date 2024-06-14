@@ -4,18 +4,53 @@ import (
 	"testing"
 )
 
-const (
-	boardRows = 3
-	boardCols = 3
-)
-
 func TestNewBoard(t *testing.T) {
-	board := NewBoard(boardCols, boardRows, 0)
+	var boardRows = 3
+	board := NewBoard(boardRows)
 	if board.Rows != boardRows {
 		t.Errorf("Expected Rows to be %d, got %d", boardRows, board.Rows)
 	}
-	if board.Cols != boardCols {
-		t.Errorf("Expected Cols to be %d, got %d", boardCols, board.Cols)
+	if board.Cols != boardRows {
+		t.Errorf("Expected Cols to be %d, got %d", boardRows, board.Cols)
+	}
+}
+
+func TestBoardString(t *testing.T) {
+	var boardRows = 3
+	board := NewBoard(boardRows)
+	boardString := board.String()
+	if boardString != "WWW...BBB" {
+		t.Errorf("Expected board string to be WWW...BBB, got %s", boardString)
+	}
+}
+
+func TestNewGame(t *testing.T) {
+	tests := []struct {
+		boardRows   int
+		numPlayers  int
+		expectError bool
+	}{
+		{2, 2, true},  // Invalid board dimensions (too small)
+		{10, 2, true}, // Invalid board dimensions (too large)
+		{3, 3, true},  // Invalid player count
+		{3, 2, false}, // Valid board dimensions
+		{5, 1, false}, // Valid board dimensions and player count
+	}
+
+	for _, test := range tests {
+		game, err := NewGame(test.boardRows, test.numPlayers)
+		if test.expectError {
+			if err == nil {
+				t.Errorf("Expected error for boardRows %d, numPlayers %d, but got none", test.boardRows, test.numPlayers)
+			}
+		} else {
+			if err != nil {
+				t.Errorf("Did not expect error for boardRows %d, numPlayers %d, but got %v", test.boardRows, test.numPlayers, err)
+			}
+			if game == nil {
+				t.Errorf("Expected valid game object for boardRows %d, numPlayers %d, but got nil", test.boardRows, test.numPlayers)
+			}
+		}
 	}
 }
 

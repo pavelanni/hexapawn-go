@@ -1,6 +1,7 @@
 package main
 
 import (
+	"log"
 	"os"
 
 	"github.com/pavelanni/hexapawn-go/hexapawn"
@@ -16,11 +17,13 @@ func main() {
 	flag.IntVarP(&numPlayers, "players", "p", 2, "Number of human players: 0, 1, or 2. Default is 2.")
 	flag.BoolVarP(&generate, "generate", "g", false, "Generate possible moves and exit.")
 	flag.Parse()
-	boardCols = boardRows
-	board := hexapawn.NewBoard(boardCols, boardRows, numPlayers)
+	game, err := hexapawn.NewGame(boardRows, numPlayers)
+	if err != nil {
+		log.Fatal(err)
+	}
 	if generate {
-		board.Generate()
+		game.Board.Generate()
 		os.Exit(0)
 	}
-	board.PlayGame()
+	game.Play()
 }
