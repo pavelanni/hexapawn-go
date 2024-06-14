@@ -3,6 +3,8 @@ package hexapawn
 import (
 	"fmt"
 	"log"
+	"math"
+	"math/rand"
 	"strconv"
 	"strings"
 )
@@ -13,9 +15,10 @@ const (
 
 // Define the Board struct
 type Board struct {
-	Rows int
-	Cols int
-	grid [][]string
+	NumPlayers int
+	Rows       int
+	Cols       int
+	grid       [][]string
 }
 
 type Piece struct {
@@ -32,16 +35,22 @@ type Move struct {
 	ToCol   int
 }
 
+type Step struct {
+	Player    string            // current player
+	Positions map[string][]Move // each position is a string like "BBB...WWW"; for each position, there is a list of possible moves
+}
+
 // Initialize a new board with pawns
-func NewBoard(boardCols, boardRows int) *Board {
+func NewBoard(boardCols, boardRows, numPlayers int) *Board {
 	// check if the board dimensions are valid
 	if boardRows < 3 || boardCols < 3 || boardRows > 9 || boardCols > 9 || boardRows != boardCols {
 		log.Fatalf("Invalid board dimensions. Rows and Cols must be equal and at least 3, at most 9.")
 	}
 	b := &Board{
-		Rows: boardRows,
-		Cols: boardCols,
-		grid: make([][]string, boardRows)}
+		NumPlayers: numPlayers,
+		Rows:       boardRows,
+		Cols:       boardCols,
+		grid:       make([][]string, boardRows)}
 	for row := 0; row < b.Rows; row++ {
 		b.grid[row] = make([]string, b.Cols)
 		for col := 0; col < b.Cols; col++ {
@@ -160,7 +169,7 @@ func (b *Board) CheckWin() string {
 		if b.grid[0][col] == "B" {
 			return "B"
 		}
-		if b.grid[2][col] == "W" {
+		if b.grid[b.Rows-1][col] == "W" {
 			return "W"
 		}
 	}
@@ -170,27 +179,58 @@ func (b *Board) CheckWin() string {
 // Play the game
 func (b *Board) PlayGame() {
 	currentPlayer := "W"
+	winner := ""
 	var moveStr string
+	var move Move
+	var moveNumber int
+	var err error
 
 	for {
-		b.Print()
+		moveNumber++
+		fmt.Printf("Move %d\n", moveNumber)
 		moves := b.GetMoves(currentPlayer)
 		if len(moves) == 0 {
-			fmt.Printf("Player %s has no moves, it loses!\n", currentPlayer)
+			if currentPlayer == "W" {
+				winner = "B"
+			} else {
+				winner = "W"
+			}
+			fmt.Printf("Player %s has no moves; player %s wins!\n", currentPlayer, winner)
 			break
 		}
-		fmt.Printf("Player %s, enter your move: ", currentPlayer)
-		fmt.Scan(&moveStr)
-
-		move, err := b.NewMove(moveStr)
-		if err != nil {
-			fmt.Println(err)
+		switch b.NumPlayers {
+		case 2:
+			fmt.Printf("Player %s, enter your move: ", currentPlayer)
+			fmt.Scan(&moveStr)
+			move, err = b.NewMove(moveStr)
+			if err != nil {
+				fmt.Println(err)
+				continue
+			}
+		case 1:
+			if currentPlayer == "W" {
+				fmt.Print("Player W, enter your move: ")
+				fmt.Scan(&moveStr)
+				move, err = b.NewMove(moveStr)
+				if err != nil {
+					fmt.Println(err)
+					continue
+				}
+			} else {
+				move = moves[rand.Intn(len(moves))]
+			}
+		case 0:
+			move = moves[rand.Intn(len(moves))]
+		default:
+			fmt.Println("Invalid number of players")
 			continue
 		}
 
 		if b.IsValidMove(move, currentPlayer) {
+			fmt.Printf("Player %s moves %s\n", currentPlayer, move)
 			b.ApplyMove(move)
-			winner := b.CheckWin()
+			b.Print()
+			winner = b.CheckWin()
 			if winner != "" {
 				fmt.Printf("Player %s wins!\n", winner)
 				break
@@ -215,6 +255,21 @@ func (m Move) String() string {
 func (b Board) String() string {
 	return fmt.Sprintf("%s%s%s", strings.Join(b.grid[0], ""),
 		strings.Join(b.grid[1], ""), strings.Join(b.grid[2], ""))
+}
+
+func BoardFromString(boardStr string) *Board {
+	// Board string must be a square of integer
+	rows := int(math.Sqrt(float64(len(boardStr))))
+	if rows*rows != len(boardStr) {
+		panic("Board string's length must be a square of integer: 9, 16, 25, etc.")
+	}
+	b := NewBoard(rows, rows, 0)
+	for i := 0; i < b.Rows; i++ {
+		for j := 0; j < b.Cols; j++ {
+			b.grid[i][j] = boardStr[i*b.Cols+j : i*b.Cols+j+1]
+		}
+	}
+	return b
 }
 
 // GetMoves returns possible moves for the given board and player
@@ -249,8 +304,6 @@ func (b *Board) GetMoves(player string) []Move {
 
 // Generate generates possible positions and moves
 func (b *Board) Generate() {
-	fmt.Println(b)
-	b.GetMoves("B")
-	b.GetMoves("W")
-
+	ps := NewPositionStore()
+	GeneratePositions(ps, b, "W")
 }

@@ -1,0 +1,54 @@
+= Machine learning with matchboxes
+:imagesdir: ./images
+
+== The game
+
+The game description is in this article by Martin Gardner: https://gwern.net/doc/reinforcement-learning/model-free/1991-gardner-ch8amatchboxgamelearningmachine.pdf
+
+The physical implementation is described at link:https://www.instructables.com/Matchbox-Mini-Chess-Learning-Machine/[Instructables].
+
+=== The rules
+
+From the article linked above:
+
+Hexapawn is played on a 3 x 3 board, with three chess
+pawns on each side as shown in Figure 43.
+Dimes and pennies can be used instead of actual chess pieces.
+Only two types of move are allowed:
+
+* A pawn may advance straight forward one square to an empty square
+* A pawn may capture an enemy pawn by moving one square diagonally, left or right,
+to a square occupied by the enemy.
+The captured piece is removed from the board.
+These are the same as pawn moves in chess, except that no double move,
+_en passant_ capture or promotion of pawns is permitted.
+
+The game is won in any of three ways:
+
+. By advancing a pawn to the third row.
+. By capturing all enemy pieces.
+. By achieving a position in which the enemy cannot move.
+
+image::fig43.png[Figure 43]
+
+Players alternate moves, moving one piece at a time.
+A draw clearly is impossible, but it is not immediately apparent whether the first or second player has the advantage.
+
+== Data structures
+
+We need a data structure that defines a board position and a way to describe a move.
+We'll have a map where for each board position we'll have a list of possible moves.
+
+A board position is encoded as a string of form: `www...bbb` where `w` and `b` are white and black pawns, and `.` are empty squares.
+
+A move is encoded by an `int` slice of form `{2, 5}` which means that the white pawn in the middle of the bottom row
+moves one square up to the middle of the middle row.
+In this case we use human-friendly numbering that is starting from 1.
+
+Another way to encode moves is to define the position _after_ the move, assuming that all moves are applied to a certain position.
+This one is a bit harder to encode without making mistakes, but it will be easier to use in the program.
+
+Let's see which one is better.
+Probably for this 3x3 board it's easier to encode the positions for each move.
+If we are going to expand the game to 4x4 or more it will be better to generate moves according to the rules and
+generate end positions for each move programmatically.

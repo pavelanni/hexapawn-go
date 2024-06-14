@@ -10,7 +10,7 @@ const (
 )
 
 func TestNewBoard(t *testing.T) {
-	board := NewBoard(boardCols, boardRows)
+	board := NewBoard(boardCols, boardRows, 0)
 	if board.Rows != boardRows {
 		t.Errorf("Expected Rows to be %d, got %d", boardRows, board.Rows)
 	}
