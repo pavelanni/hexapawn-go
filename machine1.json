@@ -1,0 +1,1735 @@
+{
+  "machine_file": "machine1.json",
+  "rows": 3,
+  "steps": [
+    {
+      "player": "W",
+      "moves": {
+        "WWW...BBB": [
+          "a1-a2",
+          "b1-b2",
+          "c1-c2"
+        ]
+      }
+    },
+    {
+      "player": "B",
+      "moves": {
+        ".WWW..BBB": [
+          "b3-a2"
+        ],
+        "W.W.W.BBB": [
+          "a3-a2",
+          "a3-b2",
+          "c3-b2"
+        ],
+        "WW...WBBB": [
+          "b3-c2"
+        ]
+      }
+    },
+    {
+      "player": "W",
+      "moves": {
+        ".WWB..B.B": [
+          "b1-a2",
+          "b1-b2",
+          "c1-c2"
+        ],
+        ".WWW.BBB.": [
+          "b1-b2",
+          "b1-c2",
+          "a2-b3"
+        ],
+        ".WWWB.B.B": [
+          "c1-b2",
+          "c1-c2"
+        ],
+        "W.W.B..BB": [
+          "a1-a2",
+          "a1-b2",
+          "c1-b2",
+          "c1-c2"
+        ],
+        "W.W.B.BB.": [
+          "a1-a2",
+          "a1-b2",
+          "c1-b2",
+          "c1-c2"
+        ],
+        "W.W.WBBB.": [
+          "a1-a2",
+          "b2-a3"
+        ],
+        "W.WBW..BB": [
+          "c1-c2",
+          "b2-c3"
+        ],
+        "WW...BB.B": [
+          "a1-a2",
+          "b1-b2",
+          "b1-c2"
+        ],
+        "WW..BWB.B": [
+          "a1-a2",
+          "a1-b2"
+        ],
+        "WW.B.W.BB": [
+          "b1-a2",
+          "b1-b2",
+          "c2-b3"
+        ]
+      }
+    },
+    {
+      "player": "B",
+      "moves": {
+        "..W.W..BB": [
+          "c3-c2"
+        ],
+        "..W.W.BB.": [
+          "a3-a2",
+          "a3-b2"
+        ],
+        "..WBW.B.B": [
+          "a2-a1",
+          "a3-b2",
+          "c3-b2",
+          "c3-c2"
+        ],
+        "..WW..B.B": [
+          "c3-c2"
+        ],
+        "..WW.WBB.": [
+          "b3-a2",
+          "b3-c2"
+        ],
+        "..WWB..BB": [
+          "b2-b1",
+          "b2-c1",
+          "b3-a2",
+          "c3-c2"
+        ],
+        "..WWB.BB.": [
+          "b2-b1",
+          "b2-c1",
+          "b3-a2"
+        ],
+        "..WWWBBB.": [
+          "a3-b2"
+        ],
+        ".W..WWB.B": [
+          "a3-a2",
+          "a3-b2",
+          "c3-b2"
+        ],
+        ".W.B.WB.B": [
+          "a2-a1",
+          "a2-b1"
+        ],
+        ".W.W.BB.B": [
+          "c2-b1",
+          "c2-c1"
+        ],
+        ".W.WW.B.B": [
+          "a3-b2",
+          "c3-b2",
+          "c3-c2"
+        ],
+        ".WW..BBW.": [
+          "c2-b1",
+          "a3-a2"
+        ],
+        "W....WB.B": [
+          "a3-a2"
+        ],
+        "W...BW.BB": [
+          "b2-a1",
+          "b2-b1",
+          "b3-c2"
+        ],
+        "W...BWBB.": [
+          "b2-a1",
+          "b2-b1",
+          "a3-a2",
+          "b3-c2"
+        ],
+        "W...W..BB": [
+          "c3-c2"
+        ],
+        "W...W.BB.": [
+          "a3-a2"
+        ],
+        "W...WBB.B": [
+          "c2-c1",
+          "a3-b2",
+          "c3-b2"
+        ],
+        "W..BWW.BB": [
+          "c3-b2"
+        ],
+        "W..W.W.BB": [
+          "b3-a2",
+          "b3-b2",
+          "b3-c2"
+        ],
+        "W.W..BWB.": [
+          "b3-b2"
+        ],
+        "W.WB...BW": [
+          "b3-b2"
+        ],
+        "WW.B...WB": [
+          "a2-b1",
+          "c3-c2"
+        ]
+      }
+    },
+    {
+      "player": "W",
+      "moves": {
+        "..BW...BB": [
+          "a2-a3",
+          "a2-b3"
+        ],
+        "..BW..BB.": [
+          "a2-b3"
+        ],
+        "..W.B..B.": [
+          "c1-b2",
+          "c1-c2"
+        ],
+        "..WB.WB..": [
+          "c2-c3"
+        ],
+        "..WBB...B": [
+          "c1-b2",
+          "c1-c2"
+        ],
+        "..WBB.B..": [
+          "c1-b2",
+          "c1-c2"
+        ],
+        "..WBW..B.": [
+          "c1-c2"
+        ],
+        "..WBWBB..": [
+          "b2-a3",
+          "b2-b3"
+        ],
+        "..WWBB.B.": [
+          "c1-b2",
+          "a2-a3",
+          "a2-b3"
+        ],
+        "..WWBWB..": [
+          "c1-b2",
+          "c2-c3"
+        ],
+        ".BW...BW.": [
+          "c1-c2"
+        ],
+        ".BWW...BB": [
+          "c1-c2",
+          "a2-a3",
+          "a2-b3"
+        ],
+        ".BWW..BB.": [
+          "c1-c2",
+          "a2-b3"
+        ],
+        ".W..BWB..": [
+          "c2-c3"
+        ],
+        ".W.BWW..B": [
+          "b1-a2",
+          "b2-b3",
+          "b2-c3"
+        ],
+        ".W.WB...B": [
+          "a2-a3"
+        ],
+        ".W.WWBB..": [
+          "b1-c2",
+          "b2-a3",
+          "b2-b3"
+        ],
+        ".WBW..B.B": [
+          "b1-b2"
+        ],
+        "B....W.BB": [
+          "c2-b3"
+        ],
+        "B....WBB.": [
+          "c2-b3",
+          "c2-c3"
+        ],
+        "B.W.W.B.B": [
+          "c1-c2",
+          "b2-a3",
+          "b2-b3",
+          "b2-c3"
+        ],
+        "BW...WB.B": [
+          "b1-b2"
+        ],
+        "W...B..B.": [
+          "a1-a2",
+          "a1-b2"
+        ],
+        "W...BB..B": [
+          "a1-a2",
+          "a1-b2"
+        ],
+        "W...BBB..": [
+          "a1-a2",
+          "a1-b2"
+        ],
+        "W...WB.B.": [
+          "a1-a2"
+        ],
+        "W..BBW.B.": [
+          "a1-b2",
+          "c2-b3",
+          "c2-c3"
+        ],
+        "W..BWB..B": [
+          "b2-b3",
+          "b2-c3"
+        ],
+        "W..W.B..B": [
+          "a2-a3"
+        ],
+        "W..WBW..B": [
+          "a1-b2",
+          "a2-a3"
+        ],
+        "W.B.W.B.B": [
+          "a1-a2",
+          "b2-a3",
+          "b2-b3",
+          "b2-c3"
+        ],
+        "WB.....WB": [
+          "a1-a2"
+        ],
+        "WB...W.BB": [
+          "a1-a2",
+          "c2-b3"
+        ],
+        "WB...WBB.": [
+          "a1-a2",
+          "c2-b3",
+          "c2-c3"
+        ]
+      }
+    },
+    {
+      "player": "B",
+      "moves": {
+        "....BW.B.": [
+          "b2-b1",
+          "b3-c2"
+        ],
+        "....WB..B": [
+          "c2-c1",
+          "c3-b2"
+        ],
+        "....WBB..": [
+          "c2-c1",
+          "a3-b2"
+        ],
+        "...BBW..B": [
+          "a2-a1",
+          "b2-b1"
+        ],
+        "...BBWB..": [
+          "a2-a1",
+          "b2-b1"
+        ],
+        "...BW...B": [
+          "a2-a1",
+          "c3-b2",
+          "c3-c2"
+        ],
+        "...BW.B..": [
+          "a2-a1",
+          "a3-b2"
+        ],
+        "...BWW.B.": [
+          "a2-a1"
+        ],
+        "...WB..B.": [
+          "b2-b1",
+          "b3-a2"
+        ],
+        "...WBB..B": [
+          "b2-b1",
+          "c2-c1"
+        ],
+        "...WBBB..": [
+          "b2-b1",
+          "c2-c1"
+        ],
+        "...WWB.B.": [
+          "c2-c1"
+        ],
+        "...WWW..B": [
+          "c3-b2"
+        ],
+        "...WWWB..": [
+          "a3-b2"
+        ],
+        "..B....WB": [
+          "c3-c2"
+        ],
+        "..B...BW.": [
+          "a3-a2"
+        ],
+        "..B...WBB": [
+          "b3-b2",
+          "c3-c2"
+        ],
+        "..W.BB.W.": [
+          "b2-b1",
+          "b2-c1"
+        ],
+        "..W.BBWB.": [
+          "b2-b1",
+          "b2-c1"
+        ],
+        "..WB..B.W": [
+          "a2-a1"
+        ],
+        "..WB.BBW.": [
+          "a2-a1"
+        ],
+        "..WB.BW..": [
+          "a2-a1"
+        ],
+        "..WWB.B.W": [
+          "b2-b1",
+          "b2-c1"
+        ],
+        ".BW...WBB": [
+          "b3-b2",
+          "c3-c2"
+        ],
+        ".W..B.B.W": [
+          "a3-a2"
+        ],
+        ".W..B.W.B": [
+          "c3-c2"
+        ],
+        ".W.B.W..W": [
+          "a2-a1",
+          "a2-b1"
+        ],
+        ".W.B.W.WB": [
+          "a2-a1",
+          "a2-b1"
+        ],
+        ".W.W.BBW.": [
+          "c2-b1",
+          "c2-c1"
+        ],
+        ".W.W.BW..": [
+          "c2-b1",
+          "c2-c1"
+        ],
+        "W....BW.B": [
+          "c2-c1"
+        ],
+        "W...BWW.B": [
+          "b2-a1",
+          "b2-b1"
+        ],
+        "W..B.B..W": [
+          "c2-c1"
+        ],
+        "W..B.B.WB": [
+          "c2-c1"
+        ],
+        "W..BB..BW": [
+          "b2-a1",
+          "b2-b1"
+        ],
+        "W..BB..W.": [
+          "b2-a1",
+          "b2-b1"
+        ],
+        "W.B...BWB": [
+          "a3-a2",
+          "c3-c2"
+        ],
+        "W.B...W.B": [
+          "c3-c2"
+        ]
+      }
+    },
+    {
+      "player": "W",
+      "moves": {
+        "...BWB...": [
+          "b2-b3"
+        ],
+        "...WBW...": [
+          "a2-a3",
+          "c2-c3"
+        ],
+        "..B.W...B": [
+          "b2-b3",
+          "b2-c3"
+        ],
+        "..B.W.B..": [
+          "b2-a3",
+          "b2-b3"
+        ],
+        "..BWB...B": [
+          "a2-a3"
+        ],
+        "..BWW..B.": [
+          "a2-a3",
+          "a2-b3"
+        ],
+        ".B...W.B.": [
+          "c2-b3",
+          "c2-c3"
+        ],
+        ".B.B.WB..": [
+          "c2-c3"
+        ],
+        ".B.W...B.": [
+          "a2-a3",
+          "a2-b3"
+        ],
+        ".B.W.B..B": [
+          "a2-a3"
+        ],
+        ".BWW..B.W": [
+          "c1-c2"
+        ],
+        "B...BWB..": [
+          "c2-c3"
+        ],
+        "B...W...B": [
+          "b2-b3",
+          "b2-c3"
+        ],
+        "B...W.B..": [
+          "b2-a3",
+          "b2-b3"
+        ],
+        "B...WW.B.": [
+          "c2-b3",
+          "c2-c3"
+        ],
+        "B.W...B.W": [
+          "c1-c2"
+        ],
+        "BW...W..W": [
+          "b1-b2"
+        ],
+        "BW...W.WB": [
+          "b1-b2"
+        ]
+      }
+    },
+    {
+      "player": "B",
+      "moves": {
+        "....BWW..": [
+          "b2-b1"
+        ],
+        "...B.B.W.": [
+          "a2-a1",
+          "c2-c1"
+        ],
+        "...WB...W": [
+          "b2-b1"
+        ],
+        "..B....WB": [
+          "c3-c2"
+        ],
+        "..B...BW.": [
+          "a3-a2"
+        ],
+        "..B.B.W.B": [
+          "b2-b1",
+          "c3-c2"
+        ],
+        ".B....WB.": [
+          "b3-b2"
+        ],
+        ".B...BW.B": [
+          "c2-c1"
+        ]
+      }
+    },
+    {
+      "player": "W",
+      "moves": {
+        ".B.W....W": [
+          "a2-a3"
+        ]
+      }
+    },
+    {
+      "player": "B",
+      "moves": {}
+    }
+  ],
+  "games_played": [
+    {
+      "moves_played": [
+        {
+          "board_str": "WWW...BBB",
+          "move_str": "a1-a2"
+        },
+        {
+          "board_str": ".WWW..BBB",
+          "move_str": "c3-c2"
+        },
+        {
+          "board_str": ".WWW.BBB.",
+          "move_str": "b1-c2"
+        },
+        {
+          "board_str": "..WW.WBB.",
+          "move_str": "b3-b2"
+        },
+        {
+          "board_str": "..WWBWB..",
+          "move_str": "c2-c3"
+        }
+      ],
+      "winner": "W"
+    },
+    {
+      "moves_played": [
+        {
+          "board_str": "WWW...BBB",
+          "move_str": "a1-a2"
+        },
+        {
+          "board_str": ".WWW..BBB",
+          "move_str": "b3-a2"
+        },
+        {
+          "board_str": ".WWB..B.B",
+          "move_str": "b1-a2"
+        },
+        {
+          "board_str": "..WW..B.B",
+          "move_str": "c3-c2"
+        }
+      ],
+      "winner": "B"
+    },
+    {
+      "moves_played": [
+        {
+          "board_str": "WWW...BBB",
+          "move_str": "b1-b2"
+        },
+        {
+          "board_str": "W.W.W.BBB",
+          "move_str": "a3-b2"
+        },
+        {
+          "board_str": "W.W.B..BB",
+          "move_str": "a1-a2"
+        },
+        {
+          "board_str": "..WWB..BB",
+          "move_str": "b2-b1"
+        }
+      ],
+      "winner": "B"
+    },
+    {
+      "moves_played": [
+        {
+          "board_str": "WWW...BBB",
+          "move_str": "c1-c2"
+        },
+        {
+          "board_str": "WW...WBBB",
+          "move_str": "b3-c2"
+        },
+        {
+          "board_str": "WW...BB.B",
+          "move_str": "b1-c2"
+        },
+        {
+          "board_str": "W....WB.B",
+          "move_str": "a3-a2"
+        }
+      ],
+      "winner": "B"
+    },
+    {
+      "moves_played": [
+        {
+          "board_str": "WWW...BBB",
+          "move_str": "c1-c2"
+        },
+        {
+          "board_str": "WW...WBBB",
+          "move_str": "b3-b2"
+        },
+        {
+          "board_str": "WW..BWB.B",
+          "move_str": "a1-a2"
+        }
+      ],
+      "winner": "W"
+    },
+    {
+      "moves_played": [
+        {
+          "board_str": "WWW...BBB",
+          "move_str": "b1-b2"
+        },
+        {
+          "board_str": "W.W.W.BBB",
+          "move_str": "c3-c2"
+        },
+        {
+          "board_str": "W.W.WBBB.",
+          "move_str": "a1-a2"
+        },
+        {
+          "board_str": "..WWWBBB.",
+          "move_str": "b3-a2"
+        },
+        {
+          "board_str": "..WBWBB..",
+          "move_str": "b2-a3"
+        }
+      ],
+      "winner": "W"
+    },
+    {
+      "moves_played": [
+        {
+          "board_str": "WWW...BBB",
+          "move_str": "a1-a2"
+        },
+        {
+          "board_str": ".WWW..BBB",
+          "move_str": "b3-a2"
+        },
+        {
+          "board_str": ".WWB..B.B",
+          "move_str": "c1-c2"
+        },
+        {
+          "board_str": ".W.B.WB.B",
+          "move_str": "a2-a1"
+        }
+      ],
+      "winner": "B"
+    },
+    {
+      "moves_played": [
+        {
+          "board_str": "WWW...BBB",
+          "move_str": "b1-b2"
+        },
+        {
+          "board_str": "W.W.W.BBB",
+          "move_str": "c3-c2"
+        },
+        {
+          "board_str": "W.W.WBBB.",
+          "move_str": "b2-a3"
+        }
+      ],
+      "winner": "W"
+    },
+    {
+      "moves_played": [
+        {
+          "board_str": "WWW...BBB",
+          "move_str": "a1-a2"
+        },
+        {
+          "board_str": ".WWW..BBB",
+          "move_str": "b3-b2"
+        },
+        {
+          "board_str": ".WWWB.B.B",
+          "move_str": "c1-c2"
+        }
+      ],
+      "winner": "W"
+    },
+    {
+      "moves_played": [
+        {
+          "board_str": "WWW...BBB",
+          "move_str": "b1-b2"
+        },
+        {
+          "board_str": "W.W.W.BBB",
+          "move_str": "a3-b2"
+        },
+        {
+          "board_str": "W.W.B..BB",
+          "move_str": "a1-b2"
+        },
+        {
+          "board_str": "..W.W..BB",
+          "move_str": "c3-b2"
+        },
+        {
+          "board_str": "..W.B..B.",
+          "move_str": "c1-b2"
+        }
+      ],
+      "winner": "W"
+    },
+    {
+      "moves_played": [
+        {
+          "board_str": "WWW...BBB",
+          "move_str": "a1-a2"
+        },
+        {
+          "board_str": ".WWW..BBB",
+          "move_str": "b3-a2"
+        },
+        {
+          "board_str": ".WWB..B.B",
+          "move_str": "c1-c2"
+        },
+        {
+          "board_str": ".W.B.WB.B",
+          "move_str": "a2-a1"
+        }
+      ],
+      "winner": "B"
+    },
+    {
+      "moves_played": [
+        {
+          "board_str": "WWW...BBB",
+          "move_str": "a1-a2"
+        },
+        {
+          "board_str": ".WWW..BBB",
+          "move_str": "b3-a2"
+        },
+        {
+          "board_str": ".WWB..B.B",
+          "move_str": "b1-a2"
+        },
+        {
+          "board_str": "..WW..B.B",
+          "move_str": "c3-c2"
+        }
+      ],
+      "winner": "B"
+    },
+    {
+      "moves_played": [
+        {
+          "board_str": "WWW...BBB",
+          "move_str": "b1-b2"
+        },
+        {
+          "board_str": "W.W.W.BBB",
+          "move_str": "a3-a2"
+        },
+        {
+          "board_str": "W.WBW..BB",
+          "move_str": "c1-c2"
+        },
+        {
+          "board_str": "W..BWW.BB",
+          "move_str": "b3-c2"
+        },
+        {
+          "board_str": "W..BWB..B",
+          "move_str": "b2-c3"
+        }
+      ],
+      "winner": "W"
+    },
+    {
+      "moves_played": [
+        {
+          "board_str": "WWW...BBB",
+          "move_str": "a1-a2"
+        },
+        {
+          "board_str": ".WWW..BBB",
+          "move_str": "c3-c2"
+        },
+        {
+          "board_str": ".WWW.BBB.",
+          "move_str": "b1-c2"
+        },
+        {
+          "board_str": "..WW.WBB.",
+          "move_str": "b3-c2"
+        }
+      ],
+      "winner": "B"
+    },
+    {
+      "moves_played": [
+        {
+          "board_str": "WWW...BBB",
+          "move_str": "a1-a2"
+        },
+        {
+          "board_str": ".WWW..BBB",
+          "move_str": "b3-a2"
+        },
+        {
+          "board_str": ".WWB..B.B",
+          "move_str": "b1-a2"
+        },
+        {
+          "board_str": "..WW..B.B",
+          "move_str": "c3-c2"
+        }
+      ],
+      "winner": "B"
+    },
+    {
+      "moves_played": [
+        {
+          "board_str": "WWW...BBB",
+          "move_str": "c1-c2"
+        },
+        {
+          "board_str": "WW...WBBB",
+          "move_str": "b3-c2"
+        },
+        {
+          "board_str": "WW...BB.B",
+          "move_str": "b1-b2"
+        },
+        {
+          "board_str": "W...WBB.B",
+          "move_str": "a3-b2"
+        },
+        {
+          "board_str": "W...BB..B",
+          "move_str": "a1-a2"
+        },
+        {
+          "board_str": "...WBB..B",
+          "move_str": "c2-c1"
+        }
+      ],
+      "winner": "B"
+    },
+    {
+      "moves_played": [
+        {
+          "board_str": "WWW...BBB",
+          "move_str": "c1-c2"
+        },
+        {
+          "board_str": "WW...WBBB",
+          "move_str": "a3-a2"
+        },
+        {
+          "board_str": "WW.B.W.BB",
+          "move_str": "c2-b3"
+        }
+      ],
+      "winner": "W"
+    },
+    {
+      "moves_played": [
+        {
+          "board_str": "WWW...BBB",
+          "move_str": "b1-b2"
+        },
+        {
+          "board_str": "W.W.W.BBB",
+          "move_str": "a3-b2"
+        },
+        {
+          "board_str": "W.W.B..BB",
+          "move_str": "c1-b2"
+        },
+        {
+          "board_str": "W...W..BB",
+          "move_str": "c3-c2"
+        },
+        {
+          "board_str": "W...WB.B.",
+          "move_str": "a1-a2"
+        },
+        {
+          "board_str": "...WWB.B.",
+          "move_str": "c2-c1"
+        }
+      ],
+      "winner": "B"
+    },
+    {
+      "moves_played": [
+        {
+          "board_str": "WWW...BBB",
+          "move_str": "c1-c2"
+        },
+        {
+          "board_str": "WW...WBBB",
+          "move_str": "b3-c2"
+        },
+        {
+          "board_str": "WW...BB.B",
+          "move_str": "b1-b2"
+        },
+        {
+          "board_str": "W...WBB.B",
+          "move_str": "a3-a2"
+        },
+        {
+          "board_str": "W..BWB..B",
+          "move_str": "b2-c3"
+        }
+      ],
+      "winner": "W"
+    },
+    {
+      "moves_played": [
+        {
+          "board_str": "WWW...BBB",
+          "move_str": "c1-c2"
+        },
+        {
+          "board_str": "WW...WBBB",
+          "move_str": "b3-c2"
+        },
+        {
+          "board_str": "WW...BB.B",
+          "move_str": "b1-b2"
+        },
+        {
+          "board_str": "W...WBB.B",
+          "move_str": "a3-b2"
+        },
+        {
+          "board_str": "W...BB..B",
+          "move_str": "a1-a2"
+        },
+        {
+          "board_str": "...WBB..B",
+          "move_str": "b2-b1"
+        }
+      ],
+      "winner": "B"
+    },
+    {
+      "moves_played": [
+        {
+          "board_str": "WWW...BBB",
+          "move_str": "b1-b2"
+        },
+        {
+          "board_str": "W.W.W.BBB",
+          "move_str": "c3-b2"
+        },
+        {
+          "board_str": "W.W.B.BB.",
+          "move_str": "c1-c2"
+        },
+        {
+          "board_str": "W...BWBB.",
+          "move_str": "b2-a1"
+        }
+      ],
+      "winner": "B"
+    },
+    {
+      "moves_played": [
+        {
+          "board_str": "WWW...BBB",
+          "move_str": "c1-c2"
+        },
+        {
+          "board_str": "WW...WBBB",
+          "move_str": "b3-c2"
+        },
+        {
+          "board_str": "WW...BB.B",
+          "move_str": "a1-a2"
+        },
+        {
+          "board_str": ".W.W.BB.B",
+          "move_str": "c2-c1"
+        }
+      ],
+      "winner": "B"
+    },
+    {
+      "moves_played": [
+        {
+          "board_str": "WWW...BBB",
+          "move_str": "a1-a2"
+        },
+        {
+          "board_str": ".WWW..BBB",
+          "move_str": "b3-a2"
+        },
+        {
+          "board_str": ".WWB..B.B",
+          "move_str": "b1-a2"
+        },
+        {
+          "board_str": "..WW..B.B",
+          "move_str": "c3-c2"
+        }
+      ],
+      "winner": "B"
+    },
+    {
+      "moves_played": [
+        {
+          "board_str": "WWW...BBB",
+          "move_str": "a1-a2"
+        },
+        {
+          "board_str": ".WWW..BBB",
+          "move_str": "b3-a2"
+        },
+        {
+          "board_str": ".WWB..B.B",
+          "move_str": "b1-a2"
+        },
+        {
+          "board_str": "..WW..B.B",
+          "move_str": "c3-c2"
+        }
+      ],
+      "winner": "B"
+    },
+    {
+      "moves_played": [
+        {
+          "board_str": "WWW...BBB",
+          "move_str": "c1-c2"
+        },
+        {
+          "board_str": "WW...WBBB",
+          "move_str": "b3-c2"
+        },
+        {
+          "board_str": "WW...BB.B",
+          "move_str": "a1-a2"
+        },
+        {
+          "board_str": ".W.W.BB.B",
+          "move_str": "c2-b1"
+        }
+      ],
+      "winner": "B"
+    },
+    {
+      "moves_played": [
+        {
+          "board_str": "WWW...BBB",
+          "move_str": "a1-a2"
+        },
+        {
+          "board_str": ".WWW..BBB",
+          "move_str": "b3-a2"
+        },
+        {
+          "board_str": ".WWB..B.B",
+          "move_str": "b1-a2"
+        },
+        {
+          "board_str": "..WW..B.B",
+          "move_str": "c3-c2"
+        }
+      ],
+      "winner": "B"
+    },
+    {
+      "moves_played": [
+        {
+          "board_str": "WWW...BBB",
+          "move_str": "b1-b2"
+        },
+        {
+          "board_str": "W.W.W.BBB",
+          "move_str": "a3-b2"
+        },
+        {
+          "board_str": "W.W.B..BB",
+          "move_str": "a1-b2"
+        },
+        {
+          "board_str": "..W.W..BB",
+          "move_str": "c3-c2"
+        }
+      ],
+      "winner": "B"
+    },
+    {
+      "moves_played": [
+        {
+          "board_str": "WWW...BBB",
+          "move_str": "c1-c2"
+        },
+        {
+          "board_str": "WW...WBBB",
+          "move_str": "b3-c2"
+        },
+        {
+          "board_str": "WW...BB.B",
+          "move_str": "b1-b2"
+        },
+        {
+          "board_str": "W...WBB.B",
+          "move_str": "c3-b2"
+        },
+        {
+          "board_str": "W...BBB..",
+          "move_str": "a1-b2"
+        },
+        {
+          "board_str": "....WBB..",
+          "move_str": "a3-b2"
+        }
+      ],
+      "winner": "B"
+    },
+    {
+      "moves_played": [
+        {
+          "board_str": "WWW...BBB",
+          "move_str": "b1-b2"
+        },
+        {
+          "board_str": "W.W.W.BBB",
+          "move_str": "a3-b2"
+        },
+        {
+          "board_str": "W.W.B..BB",
+          "move_str": "c1-b2"
+        },
+        {
+          "board_str": "W...W..BB",
+          "move_str": "c3-c2"
+        },
+        {
+          "board_str": "W...WB.B.",
+          "move_str": "a1-a2"
+        },
+        {
+          "board_str": "...WWB.B.",
+          "move_str": "b3-a2"
+        },
+        {
+          "board_str": "...BWB...",
+          "move_str": "b2-b3"
+        }
+      ],
+      "winner": "W"
+    },
+    {
+      "moves_played": [
+        {
+          "board_str": "WWW...BBB",
+          "move_str": "b1-b2"
+        },
+        {
+          "board_str": "W.W.W.BBB",
+          "move_str": "c3-b2"
+        },
+        {
+          "board_str": "W.W.B.BB.",
+          "move_str": "c1-b2"
+        },
+        {
+          "board_str": "W...W.BB.",
+          "move_str": "a3-b2"
+        },
+        {
+          "board_str": "W...B..B.",
+          "move_str": "a1-b2"
+        }
+      ],
+      "winner": "W"
+    },
+    {
+      "moves_played": [
+        {
+          "board_str": "WWW...BBB",
+          "move_str": "b1-b2"
+        },
+        {
+          "board_str": "W.W.W.BBB",
+          "move_str": "a3-b2"
+        },
+        {
+          "board_str": "W.W.B..BB",
+          "move_str": "a1-a2"
+        },
+        {
+          "board_str": "..WWB..BB",
+          "move_str": "b2-b1"
+        }
+      ],
+      "winner": "B"
+    },
+    {
+      "moves_played": [
+        {
+          "board_str": "WWW...BBB",
+          "move_str": "c1-c2"
+        },
+        {
+          "board_str": "WW...WBBB",
+          "move_str": "b3-c2"
+        },
+        {
+          "board_str": "WW...BB.B",
+          "move_str": "b1-b2"
+        },
+        {
+          "board_str": "W...WBB.B",
+          "move_str": "c3-b2"
+        },
+        {
+          "board_str": "W...BBB..",
+          "move_str": "a1-b2"
+        },
+        {
+          "board_str": "....WBB..",
+          "move_str": "a3-a2"
+        },
+        {
+          "board_str": "...BWB...",
+          "move_str": "b2-b3"
+        }
+      ],
+      "winner": "W"
+    },
+    {
+      "moves_played": [
+        {
+          "board_str": "WWW...BBB",
+          "move_str": "b1-b2"
+        },
+        {
+          "board_str": "W.W.W.BBB",
+          "move_str": "a3-b2"
+        },
+        {
+          "board_str": "W.W.B..BB",
+          "move_str": "c1-b2"
+        },
+        {
+          "board_str": "W...W..BB",
+          "move_str": "c3-b2"
+        },
+        {
+          "board_str": "W...B..B.",
+          "move_str": "a1-b2"
+        }
+      ],
+      "winner": "W"
+    },
+    {
+      "moves_played": [
+        {
+          "board_str": "WWW...BBB",
+          "move_str": "a1-a2"
+        },
+        {
+          "board_str": ".WWW..BBB",
+          "move_str": "c3-c2"
+        },
+        {
+          "board_str": ".WWW.BBB.",
+          "move_str": "a2-b3"
+        }
+      ],
+      "winner": "W"
+    },
+    {
+      "moves_played": [
+        {
+          "board_str": "WWW...BBB",
+          "move_str": "c1-c2"
+        },
+        {
+          "board_str": "WW...WBBB",
+          "move_str": "b3-c2"
+        },
+        {
+          "board_str": "WW...BB.B",
+          "move_str": "b1-b2"
+        },
+        {
+          "board_str": "W...WBB.B",
+          "move_str": "a3-b2"
+        },
+        {
+          "board_str": "W...BB..B",
+          "move_str": "a1-b2"
+        },
+        {
+          "board_str": "....WB..B",
+          "move_str": "c2-c1"
+        }
+      ],
+      "winner": "B"
+    },
+    {
+      "moves_played": [
+        {
+          "board_str": "WWW...BBB",
+          "move_str": "a1-a2"
+        },
+        {
+          "board_str": ".WWW..BBB",
+          "move_str": "b3-a2"
+        },
+        {
+          "board_str": ".WWB..B.B",
+          "move_str": "c1-c2"
+        },
+        {
+          "board_str": ".W.B.WB.B",
+          "move_str": "a2-b1"
+        }
+      ],
+      "winner": "B"
+    },
+    {
+      "moves_played": [
+        {
+          "board_str": "WWW...BBB",
+          "move_str": "b1-b2"
+        },
+        {
+          "board_str": "W.W.W.BBB",
+          "move_str": "a3-a2"
+        },
+        {
+          "board_str": "W.WBW..BB",
+          "move_str": "c1-c2"
+        },
+        {
+          "board_str": "W..BWW.BB",
+          "move_str": "c3-b2"
+        },
+        {
+          "board_str": "W..BBW.B.",
+          "move_str": "a1-b2"
+        },
+        {
+          "board_str": "...BWW.B.",
+          "move_str": "b3-c2"
+        },
+        {
+          "board_str": "...BWB...",
+          "move_str": "b2-b3"
+        }
+      ],
+      "winner": "W"
+    },
+    {
+      "moves_played": [
+        {
+          "board_str": "WWW...BBB",
+          "move_str": "a1-a2"
+        },
+        {
+          "board_str": ".WWW..BBB",
+          "move_str": "b3-a2"
+        },
+        {
+          "board_str": ".WWB..B.B",
+          "move_str": "c1-c2"
+        },
+        {
+          "board_str": ".W.B.WB.B",
+          "move_str": "a2-a1"
+        }
+      ],
+      "winner": "B"
+    },
+    {
+      "moves_played": [
+        {
+          "board_str": "WWW...BBB",
+          "move_str": "a1-a2"
+        },
+        {
+          "board_str": ".WWW..BBB",
+          "move_str": "b3-a2"
+        },
+        {
+          "board_str": ".WWB..B.B",
+          "move_str": "b1-a2"
+        },
+        {
+          "board_str": "..WW..B.B",
+          "move_str": "c3-c2"
+        }
+      ],
+      "winner": "B"
+    },
+    {
+      "moves_played": [
+        {
+          "board_str": "WWW...BBB",
+          "move_str": "b1-b2"
+        },
+        {
+          "board_str": "W.W.W.BBB",
+          "move_str": "a3-b2"
+        },
+        {
+          "board_str": "W.W.B..BB",
+          "move_str": "c1-c2"
+        },
+        {
+          "board_str": "W...BW.BB",
+          "move_str": "b3-c2"
+        },
+        {
+          "board_str": "W...BB..B",
+          "move_str": "a1-b2"
+        },
+        {
+          "board_str": "....WB..B",
+          "move_str": "c2-c1"
+        }
+      ],
+      "winner": "B"
+    },
+    {
+      "moves_played": [
+        {
+          "board_str": "WWW...BBB",
+          "move_str": "c1-c2"
+        },
+        {
+          "board_str": "WW...WBBB",
+          "move_str": "b3-c2"
+        },
+        {
+          "board_str": "WW...BB.B",
+          "move_str": "b1-c2"
+        },
+        {
+          "board_str": "W....WB.B",
+          "move_str": "a3-a2"
+        }
+      ],
+      "winner": "B"
+    },
+    {
+      "moves_played": [
+        {
+          "board_str": "WWW...BBB",
+          "move_str": "a1-a2"
+        },
+        {
+          "board_str": ".WWW..BBB",
+          "move_str": "b3-a2"
+        },
+        {
+          "board_str": ".WWB..B.B",
+          "move_str": "c1-c2"
+        },
+        {
+          "board_str": ".W.B.WB.B",
+          "move_str": "a2-b1"
+        }
+      ],
+      "winner": "B"
+    },
+    {
+      "moves_played": [
+        {
+          "board_str": "WWW...BBB",
+          "move_str": "b1-b2"
+        },
+        {
+          "board_str": "W.W.W.BBB",
+          "move_str": "a3-b2"
+        },
+        {
+          "board_str": "W.W.B..BB",
+          "move_str": "a1-a2"
+        },
+        {
+          "board_str": "..WWB..BB",
+          "move_str": "b3-a2"
+        },
+        {
+          "board_str": "..WBB...B",
+          "move_str": "c1-c2"
+        },
+        {
+          "board_str": "...BBW..B",
+          "move_str": "b2-b1"
+        }
+      ],
+      "winner": "B"
+    },
+    {
+      "moves_played": [
+        {
+          "board_str": "WWW...BBB",
+          "move_str": "a1-a2"
+        },
+        {
+          "board_str": ".WWW..BBB",
+          "move_str": "b3-a2"
+        },
+        {
+          "board_str": ".WWB..B.B",
+          "move_str": "c1-c2"
+        },
+        {
+          "board_str": ".W.B.WB.B",
+          "move_str": "a2-a1"
+        }
+      ],
+      "winner": "B"
+    },
+    {
+      "moves_played": [
+        {
+          "board_str": "WWW...BBB",
+          "move_str": "c1-c2"
+        },
+        {
+          "board_str": "WW...WBBB",
+          "move_str": "b3-c2"
+        },
+        {
+          "board_str": "WW...BB.B",
+          "move_str": "a1-a2"
+        },
+        {
+          "board_str": ".W.W.BB.B",
+          "move_str": "c2-c1"
+        }
+      ],
+      "winner": "B"
+    },
+    {
+      "moves_played": [
+        {
+          "board_str": "WWW...BBB",
+          "move_str": "c1-c2"
+        },
+        {
+          "board_str": "WW...WBBB",
+          "move_str": "b3-c2"
+        },
+        {
+          "board_str": "WW...BB.B",
+          "move_str": "b1-c2"
+        },
+        {
+          "board_str": "W....WB.B",
+          "move_str": "a3-a2"
+        }
+      ],
+      "winner": "B"
+    },
+    {
+      "moves_played": [
+        {
+          "board_str": "WWW...BBB",
+          "move_str": "b1-b2"
+        },
+        {
+          "board_str": "W.W.W.BBB",
+          "move_str": "a3-b2"
+        },
+        {
+          "board_str": "W.W.B..BB",
+          "move_str": "a1-b2"
+        },
+        {
+          "board_str": "..W.W..BB",
+          "move_str": "c3-c2"
+        }
+      ],
+      "winner": "B"
+    },
+    {
+      "moves_played": [
+        {
+          "board_str": "WWW...BBB",
+          "move_str": "b1-b2"
+        },
+        {
+          "board_str": "W.W.W.BBB",
+          "move_str": "c3-b2"
+        },
+        {
+          "board_str": "W.W.B.BB.",
+          "move_str": "c1-b2"
+        },
+        {
+          "board_str": "W...W.BB.",
+          "move_str": "a3-a2"
+        }
+      ],
+      "winner": "B"
+    },
+    {
+      "moves_played": [
+        {
+          "board_str": "WWW...BBB",
+          "move_str": "c1-c2"
+        },
+        {
+          "board_str": "WW...WBBB",
+          "move_str": "b3-c2"
+        },
+        {
+          "board_str": "WW...BB.B",
+          "move_str": "a1-a2"
+        },
+        {
+          "board_str": ".W.W.BB.B",
+          "move_str": "c2-b1"
+        }
+      ],
+      "winner": "B"
+    },
+    {
+      "moves_played": [
+        {
+          "board_str": "WWW...BBB",
+          "move_str": "c1-c2"
+        },
+        {
+          "board_str": "WW...WBBB",
+          "move_str": "b3-c2"
+        },
+        {
+          "board_str": "WW...BB.B",
+          "move_str": "a1-a2"
+        },
+        {
+          "board_str": ".W.W.BB.B",
+          "move_str": "c2-b1"
+        }
+      ],
+      "winner": "B"
+    }
+  ],
+  "Logger": {}
+}
