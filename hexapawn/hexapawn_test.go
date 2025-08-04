@@ -55,51 +55,146 @@ func TestNewGame(t *testing.T) {
 }
 
 func TestNewMove(t *testing.T) {
-	b := &Board{Cols: 8, Rows: 8}
-
-	// Test valid move
-	move, err := b.MoveFromString("a1-b2")
-	if err != nil {
-		t.Errorf("Unexpected error: %v", err)
+	tests := []struct {
+		name        string
+		moveStr     string
+		board       *Board
+		expected    Move
+		expectError bool
+	}{
+		{
+			name:        "Valid move",
+			moveStr:     "a1-b2",
+			board:       &Board{Cols: 8, Rows: 8},
+			expected:    Move{FromRow: 0, FromCol: 0, ToRow: 1, ToCol: 1},
+			expectError: false,
+		},
+		{
+			name:        "Invalid move string length",
+			moveStr:     "a1-b2-c3",
+			board:       &Board{Cols: 8, Rows: 8},
+			expectError: true,
+		},
+		{
+			name:        "Invalid from column",
+			moveStr:     "i1-b2",
+			board:       &Board{Cols: 8, Rows: 8},
+			expectError: true,
+		},
+		{
+			name:        "Invalid from row",
+			moveStr:     "a9-b2",
+			board:       &Board{Cols: 8, Rows: 8},
+			expectError: true,
+		},
+		{
+			name:        "Invalid to column",
+			moveStr:     "a1-i2",
+			board:       &Board{Cols: 8, Rows: 8},
+			expectError: true,
+		},
+		{
+			name:        "Invalid to row",
+			moveStr:     "a1-b9",
+			board:       &Board{Cols: 8, Rows: 8},
+			expectError: true,
+		},
 	}
-	expectedMove := Move{0, 0, 1, 1}
-	if move != expectedMove {
-		t.Errorf("Expected move %v, got %v", expectedMove, move)
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			move, err := tt.board.MoveFromString(tt.moveStr)
+			if tt.expectError {
+				if err == nil {
+					t.Errorf("Expected error for %s, but got none", tt.name)
+				}
+			} else {
+				if err != nil {
+					t.Errorf("Unexpected error for %s: %v", tt.name, err)
+				}
+				if move != tt.expected {
+					t.Errorf("Expected move %v, got %v", tt.expected, move)
+				}
+			}
+		})
+	}
+}
+
+func TestPosition(t *testing.T) {
+	board := BoardFromString("WWW...BBB")
+
+	tests := []struct {
+		name          string
+		board         *Board
+		player        string
+		expectedMoves []Move
+		expectError   bool
+	}{
+		{
+			name:   "Initial position white",
+			board:  board,
+			player: "W",
+			expectedMoves: []Move{
+				{FromRow: 0, FromCol: 0, ToRow: 1, ToCol: 0},
+				{FromRow: 0, FromCol: 1, ToRow: 1, ToCol: 1},
+				{FromRow: 0, FromCol: 2, ToRow: 1, ToCol: 2},
+			},
+			expectError: false,
+		},
+		{
+			name:   "Initial position black",
+			board:  board,
+			player: "B",
+			expectedMoves: []Move{
+				{FromRow: 2, FromCol: 0, ToRow: 1, ToCol: 0},
+				{FromRow: 2, FromCol: 1, ToRow: 1, ToCol: 1},
+				{FromRow: 2, FromCol: 2, ToRow: 1, ToCol: 2},
+			},
+			expectError: false,
+		},
+		{
+			name:        "Nil board",
+			board:       nil,
+			player:      "W",
+			expectError: true,
+		},
+		{
+			name:   "Position with capture moves",
+			board:  BoardFromString("W.W.B.B.B"),
+			player: "W",
+			expectedMoves: []Move{
+				{FromRow: 0, FromCol: 0, ToRow: 1, ToCol: 1}, // Diagonal capture
+				{FromRow: 0, FromCol: 2, ToRow: 1, ToCol: 1}, // Diagonal capture
+			},
+			expectError: false,
+		},
 	}
 
-	// Test invalid move string length
-	_, err = b.MoveFromString("a1-b2-c3")
-	if err == nil {
-		t.Errorf("Expected error for invalid move string length, got nil")
-	}
-
-	// Test invalid move string format
-	_, err = b.MoveFromString("a1-b2-c3")
-	if err == nil {
-		t.Errorf("Expected error for invalid move string format, got nil")
-	}
-
-	// Test invalid fromCol
-	_, err = b.MoveFromString("i1-b2")
-	if err == nil {
-		t.Errorf("Expected error for invalid fromCol, got nil")
-	}
-
-	// Test invalid fromRow
-	_, err = b.MoveFromString("a9-b2")
-	if err == nil {
-		t.Errorf("Expected error for invalid fromRow, got nil")
-	}
-
-	// Test invalid toCol
-	_, err = b.MoveFromString("a1-i2")
-	if err == nil {
-		t.Errorf("Expected error for invalid toCol, got nil")
-	}
-
-	// Test invalid toRow
-	_, err = b.MoveFromString("a1-b9")
-	if err == nil {
-		t.Errorf("Expected error for invalid toRow, got nil")
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			pos := &Position{
+				Board:  tt.board,
+				Player: tt.player,
+			}
+			moves, err := pos.GenerateAvailableMoves()
+			if tt.expectError {
+				if err == nil {
+					t.Errorf("Expected error for %s, but got none", tt.name)
+				}
+			} else {
+				if err != nil {
+					t.Errorf("Unexpected error for %s: %v", tt.name, err)
+				}
+				if len(moves) != len(tt.expectedMoves) {
+					t.Errorf("Expected %d moves, got %d", len(tt.expectedMoves), len(moves))
+				}
+				// Compare moves
+				for i, move := range moves {
+					if move != tt.expectedMoves[i] {
+						t.Errorf("Move %d: expected %v, got %v", i, tt.expectedMoves[i], move)
+					}
+				}
+			}
+		})
 	}
 }
