@@ -8,6 +8,8 @@ import (
 	"strings"
 )
 
+const letters = "abcdefghijklmnopqrstuvwxyz"
+
 // String is a stringer for Move
 func (m Move) String() string {
 	return fmt.Sprintf("%s%d-%s%d", letters[m.FromCol:m.FromCol+1], m.FromRow+1, letters[m.ToCol:m.ToCol+1], m.ToRow+1)

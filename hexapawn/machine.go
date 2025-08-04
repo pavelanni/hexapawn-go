@@ -8,55 +8,80 @@ import (
 	"slices"
 )
 
+// NewMachine creates a new machine learning instance
 func NewMachine() *Machine {
-	return &Machine{}
+	return &Machine{
+		Steps:       make([]Step, 0),
+		GamesPlayed: make([]GamePlayed, 0),
+	}
 }
 
+// Play executes the specified number of games
 func (m *Machine) Play(numGames int) error {
 	if m.Logger == nil {
-		return fmt.Errorf("slog.Logger is nil")
+		return NewGameError(ErrMachineLearning, "logger is not initialized")
 	}
+
 	for i := 0; i < numGames; i++ {
-		fmt.Printf("Game %d/%d\n", i+1, numGames)
+		m.Logger.Info("starting game", slog.Int("game", i+1), slog.Int("total", numGames))
+
 		g, err := NewGame(m.NumRows, 0)
 		if err != nil {
-			panic(err)
+			return fmt.Errorf("failed to create game: %w", err)
 		}
+
 		g.Steps = m.Steps
 		g.Play()
+
 		m.GamesPlayed = append(m.GamesPlayed, GamePlayed{
 			MovesPlayed: g.MovesPlayed,
 			Winner:      g.Winner,
 		})
-		m.Logger.Info("game result", slog.Int("game", i+1), slog.String("winner", g.Winner))
-		err = m.Train("B")
-		if err != nil {
-			return err
+
+		m.Logger.Info("game completed",
+			slog.Int("game", i+1),
+			slog.String("winner", g.Winner),
+			slog.Int("moves", len(g.MovesPlayed)))
+
+		if err := m.Train(string(BlackPlayer)); err != nil {
+			return fmt.Errorf("training failed: %w", err)
 		}
 	}
 	return nil
 }
 
+// Train updates the machine learning model based on game results
 func (m *Machine) Train(player string) error {
 	lastGame := m.GamesPlayed[len(m.GamesPlayed)-1]
 	if lastGame.Winner == player {
-		return nil // no need to train
+		return nil // no need to train on winning games
 	}
-	lastMove := lastGame.MovesPlayed[len(lastGame.MovesPlayed)-2] // we need not the last move, but the move before the last
-	fmt.Printf("lastMove: %v\n", lastMove)
-	// remove the last move from the steps
-	lastStep := len(lastGame.MovesPlayed) - 2 // we need not the last step, but the step before the last because the last was the winning move
-	fmt.Printf("lastStep: %d\n", lastStep)    // index of the last step
-	fmt.Printf("m.Steps[lastStep]: %v\n", m.Steps[lastStep])
-	fmt.Printf("m.Steps[lastStep].Moves[lastMove.BoardStr]: %v\n", m.Steps[lastStep].Moves[lastMove.BoardStr])
-	lastMoveIndex := slices.Index(m.Steps[lastStep].Moves[lastMove.BoardStr], lastMove.MoveStr) // index of the last (bad) move
-	if lastMoveIndex == -1 {
-		return fmt.Errorf("last move not found in steps")
-	}
-	fmt.Printf("lastMoveIndex: %d\n", lastMoveIndex)
-	m.Steps[lastStep].Moves[lastMove.BoardStr] = slices.Delete(m.Steps[lastStep].Moves[lastMove.BoardStr], lastMoveIndex, lastMoveIndex+1)
-	return m.Save()
 
+	if len(lastGame.MovesPlayed) < 2 {
+		return NewGameError(ErrMachineLearning, "insufficient moves for training")
+	}
+
+	// Get the losing move (second to last move)
+	lastMove := lastGame.MovesPlayed[len(lastGame.MovesPlayed)-2]
+	lastStep := len(lastGame.MovesPlayed) - 2
+
+	m.Logger.Debug("training on losing move",
+		slog.String("board", lastMove.BoardStr),
+		slog.String("move", lastMove.MoveStr))
+
+	// Remove the losing move from available moves
+	moves, exists := m.Steps[lastStep].Moves[lastMove.BoardStr]
+	if !exists {
+		return NewGameError(ErrMachineLearning, "board state not found in training data")
+	}
+
+	lastMoveIndex := slices.Index(moves, lastMove.MoveStr)
+	if lastMoveIndex == -1 {
+		return NewGameError(ErrMachineLearning, "move not found in training data")
+	}
+
+	m.Steps[lastStep].Moves[lastMove.BoardStr] = slices.Delete(moves, lastMoveIndex, lastMoveIndex+1)
+	return m.Save()
 }
 
 func (m *Machine) Load() error {
@@ -162,8 +187,10 @@ func (b *Board) ValidMoves(player string) []string {
 		for row := 0; row < b.Rows; row++ {
 			for col := 0; col < b.Cols; col++ {
 				m := Move{FromRow: piece.Row, FromCol: piece.Col, ToRow: row, ToCol: col}
-				if b.IsValidMove(m.String(), player) {
+				if err := b.IsValidMove(m.String(), player); err == nil {
 					moves = append(moves, m.String())
+				} else {
+					continue
 				}
 			}
 		}
